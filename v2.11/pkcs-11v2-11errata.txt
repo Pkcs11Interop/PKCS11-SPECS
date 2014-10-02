@@ -1,0 +1,19 @@
+		     PKCS #11 v2.11 rev. 1 Errata
+		     ----------------------------
+$Revision: 1.3 $
+
+January, 2003
+
+Copyright (C) 2003 RSA Laboratories, a division of RSA Security
+Inc. License to copy this document is granted provided that it is
+identified as "RSA Security Inc. Public-Key Cryptography Standards
+(PKCS)" in all material mentioning or referencing this document.
+
+This note lists known errors in PKCS #11: Cryptographic Token
+Interface Standard, version 2.11 (Rev. 1), and should be incorporated
+into that version.
+
+-Section 12.36.1: "CKM_WRAP_LYNKS" should be replaced with
+ "CKM_KEY_WRAP_LYNKS"
+
+

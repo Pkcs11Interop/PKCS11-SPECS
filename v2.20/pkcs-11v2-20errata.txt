@@ -1,0 +1,146 @@
+                        PKCS #11 v2.20 Errata
+                        ---------------------
+$Revision: 1.5 $
+
+$Date: 2006/11/14 19:18:18 $
+
+Copyright © 2005-2006 RSA Security Inc. All rights reserved.  License
+to copy this document and furnish the copies to others is granted
+provided that the above copyright notice is included on all such
+copies.  This document should be identified as "RSA Security
+Inc. Public-Key Cryptography Standards (PKCS)" in all material
+mentioning or referencing this document.
+
+This note lists known errors in PKCS #11: Cryptographic Token
+Interface Standard, version 2.20, and should be incorporated into that
+version.
+
+1. Incorrect examples in Section 11.7
+
+The example for C_CreateObject incorrectly specifies the "application"
+attribute as CK_CHAR string. It shall be a CK_UTF8CHAR string, and in
+the attribute template the length (sizeof) shall be subtracted by one
+(no terminating NULL character).
+
+The example for C_GetObjectSize incorrectly specifies the "application"
+attribute as CK_CHAR string. It shall be CK_UTF8CHAR string, and in
+the attribute template the length (sizeof) shall be subtracted by one
+(no terminating NULL character).
+
+2. Missing mechanisms in Table 34, Section 12
+
+Table 34 misses several of the new mechanisms. The following rows
+should be added to Table 34:
+
+                    Encrypt/  Sign/  SR &  Digest Gen.Key  Wrap/  Derive
+                    Decrypt  Verify   VR                  Unwrap
+                    ----------------------------------------------------
+CKM_BLOWFISH_KEY_GEN                                  x
+CKM_BLOWFISH_CBC      x                                      x
+CKM_TWOFISH_KEY_GEN                                   x
+CKM_TWOFISH_CBC       x                                      x
+CKM_DES_OFB64         x                                       
+CKM_DES_OFB8          x                                       
+CKM_DES_CFB64         x                               
+CKM_DES_CFB8          x                                       
+
+3. Missing definition for CK_AES_CBC_ENCRYPT_DATA_PARAMS_PTR
+
+Section 12.14.1 erroneously duplicates the typedef for
+CK_DES_CBC_ENCRYPT_DATA_PARAMS_PTR. Instead, the last typedef of
+Section 12.14.1 should read:
+
+typedef CK_AES_CBC_ENCRYPT_DATA_PARAMS CK_PTR
+        CK_AES_CBC_ENCRYPT_DATA_PARAMS_PTR;
+
+4. Incorrect attribute name CKA_UNEXTRACTABLE
+
+Section 11.1.6 incorrectly mentions a non-existent CKA_UNEXTRACTABLE
+attribute in the description of the return values
+CKR_KEY_NOT_WRAPPABLE and CKR_KEY_UNEXTRACTABLE. The correct text for
+these two return values shall be:
+
+- CKR_KEY_NOT_WRAPPABLE: Although the specified private or secret key
+  does not have its CKA_EXTRACTABLE attribute set to CK_FALSE,
+  Cryptoki (or the token) is unable to wrap the key as requested
+  (possibly the token can only wrap a given key with certain types of
+  keys, and the wrapping key specified is not one of these
+  types). Compare with CKR_KEY_UNEXTRACTABLE.
+
+- CKR_KEY_UNEXTRACTABLE: The specified private or secret key can’t be
+  wrapped because its CKA_EXTRACTABLE attribute is set to CK_FALSE.
+  Compare with CKR_KEY_NOT_WRAPPABLE.
+
+5. Incorrect parameter name in description of C_SignEncryptUpdate
+
+In Section 11.13, the first paragraph describing the parameters for
+C_SignEncryptUpdate erroneously refers to pulEncryptedPart. This
+should be pulEncryptedPartLen.
+
+6. Incorrect return value in description of C_OpenSession
+
+In the description of C_OpenSession in Section 11.6, the second
+paragraph shall refer to CKR_SESSION_PARALLEL_NOT_SUPPORTED, and not
+CKR_PARALLEL_NOT_SUPPORTED.
+
+7. Incorrect description of CKF_SO_PIN_LOCKED in Table 11
+
+Table 11 (in Section 9.2) contains an incorrect description for
+CKF_SO_PIN_LOCKED. The description shall read:
+
+	True if the SO PIN has been locked. SO login to 
+	the token is not possible.
+
+8. Incorrect reference to C_InitToken in Table 11
+
+In two places (in the description of CKF_TOKEN_INITIALIZED) Table 11
+incorrectly refers to C_InitializeToken. This should be changed to
+C_InitToken.
+
+9. Garbled text in Table 11
+
+In two places (in the description of CKF_USER_PIN_FINAL_TRY and
+CKF_SO_PIN_FINAL_TRY) Table 11 contains the text "will it to", this
+text shall be replaced with "will cause the token to".
+
+10. Incorrect reference to C_InitToken in Table 19
+
+The description of the CKA_RESET_ON_INIT attribute incorrectly refers
+to C_InitializeToken. This shall be changed to C_InitToken.
+
+11. Incorrect footnote reference in Table 24
+
+The footnote referenced in the CKA_VALUE entry shall be footnote 2,
+note footnote 1.
+
+12. Incorrect mechanism identifier in Section 12.23.3
+
+Section 12.23.3 references CKM_SHA256_HMAC_GENERAL. This should be
+CKM_SHA384_HMAC_GENERAL.
+
+13. Clarification of TLS version number in Section 12.32.4
+
+Add the following section at the end of the second paragraph of
+Section 12.32.4:
+
+"The CK_VERSION structure should have the version value {3, 1} for
+TLS version 1.0."
+
+14. Incorrect examples in Section 11.6
+
+The example in the description of C_Logout shall subtract one from the
+length of userPIN, i.e. replace: sizeof(userPIN) with:
+sizeof(userPIN)-1
+
+15. Incorrect reference in Section 11.7
+
+The text in the description of C_SetAttributeValue refers to Section
+9.7 for details. This shall be replaced with a reference to Section
+10.1.2.
+
+16. Incorrect examples in Section 11.5
+
+The examples for C_InitPIN and C_SetPIN in Section 11.5 shall subtract
+one from the length of newPIN and oldPIN, i.e., replace sizeof(newPIN)
+with (sizeof(newPIN)-1) and replace sizeof(oldPIN) with
+(sizeof(oldPIN)-1).
