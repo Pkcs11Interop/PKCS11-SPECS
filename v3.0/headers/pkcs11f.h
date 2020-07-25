@@ -1,12 +1,8 @@
-/* Copyright (c) OASIS Open 2016, 2019. All Rights Reserved./
+/* Copyright (c) OASIS Open 2016-2020. All Rights Reserved.
  * /Distributed under the terms of the OASIS IPR Policy,
  * [http://www.oasis-open.org/policies-guidelines/ipr], AS-IS, WITHOUT ANY
  * IMPLIED OR EXPRESS WARRANTY; there is no warranty of MERCHANTABILITY, FITNESS FOR A
  * PARTICULAR PURPOSE or NONINFRINGEMENT of the rights of others.
- */
-
-/* Latest version of the specification:
- * http://docs.oasis-open.org/pkcs11/pkcs11-base/v2.40/pkcs11-base-v2.40.html
  */
 
 /* This header file contains pretty much everything about all the

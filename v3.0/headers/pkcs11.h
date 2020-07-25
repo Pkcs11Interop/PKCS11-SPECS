@@ -1,4 +1,4 @@
-/* Copyright (c) OASIS Open 2016-2019. All Rights Reserved.
+/* Copyright (c) OASIS Open 2016-2020. All Rights Reserved.
  * Distributed under the terms of the OASIS IPR Policy,
  * [http://www.oasis-open.org/policies-guidelines/ipr], AS-IS, WITHOUT ANY
  * IMPLIED OR EXPRESS WARRANTY; there is no warranty of MERCHANTABILITY, FITNESS FOR A
