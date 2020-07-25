@@ -12,7 +12,8 @@ PKCS#11 specifications:
 2001 - [PKCS#11 v2.11](v2.11)  
 2004 - [PKCS#11 v2.20](v2.20)  
 2009 - [PKCS#11 v2.30](v2.30_DRAFT)  
-2015 - [PKCS#11 v2.40](v2.40)
+2015 - [PKCS#11 v2.40](v2.40)  
+2020 - [PKCS#11 v3.0](v3.0)  
 
 Related specifications:
 
